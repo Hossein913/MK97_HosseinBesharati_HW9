@@ -53,6 +53,7 @@ namespace ProductManager.Services.Services
                 car.Barcode = updatedcar.Barcode;
                 car.Price = updatedcar.Price;
                 car.Description = updatedcar.Description;
+                car.Photo = updatedcar.Photo;
 
             }
             return car;
