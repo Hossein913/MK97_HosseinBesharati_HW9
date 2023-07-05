@@ -1,0 +1,36 @@
+﻿@page
+@model ProductManager.Pages.Products.IndexModel
+@{
+    ViewData["Title"] = "Home page";
+    ViewData["Name"] = "Product List";
+}
+
+
+<div class="card-deck">
+  <div class="row">
+    @foreach(var item in Model.Cars)
+    {
+            var imgRef = "images/" + (@item.Photo ?? "NoImages.jpg");
+
+        <div class="card m-4" style="width: 20rem; max-width:60%;">
+                <img asp-append-version="true" class="card-img mt-1" src="@imgRef" alt="@item.Photo" height="200px">
+            <div class="card-body">
+                <h5 class="card-title">@item.Name</h5>
+              <div calss="p-2">
+                <p class="card-text">@item.Description.</p>
+                <p class="card-text">Barcode : @item.Barcode.</p>
+                <p class="card-text">$ @item.Price </p>
+              </div>
+              <hr width="100%">
+              <div class="mt-2">
+                        <a class="btn btn-primary m-1" asp-page="Deteil" asp-route-id="@item.Id">Deteil</a>
+                        <a class="btn btn-success m-1" asp-page="Form" asp-route-id="@item.Id">Edite</a>
+                        <a class="btn btn-danger m-1" asp-page="Delete" asp-route-id="@item.Id">Delete</a>
+              </div>
+            </div>
+        </div>
+        
+    }
+  </div>
+
+</div>

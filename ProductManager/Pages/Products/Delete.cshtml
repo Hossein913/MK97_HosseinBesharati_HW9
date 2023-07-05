@@ -1,0 +1,37 @@
+﻿@page "{id:min(1)}"
+@model ProductManager.Pages.Products.DeleteModel
+@{
+    var imgRef = "../../images/" + (@Model.caritem.Photo ?? "NoImages.jpg");
+    ViewData["Title"] = "Delete";
+    ViewData["Name"] = @Model.caritem.Name;
+}
+
+<div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading">warning!</h4>
+    <p>Are you sure to delete thid product.</p>
+    <hr>
+
+      <div class="col-6">
+         <div class="card-deck">
+             <div class="row">
+                 <div class="col-6">
+                      <img class="card-img mt-1" src="@imgRef" alt="@Model.caritem.Photo" height="100%">
+                 </div>
+                  <div class="col-6">
+                      <div class="card-body">
+                            <h5 class="card-title">@Model.caritem.Name</h5>
+                            <div calss="ms-2">
+                                <p class="card-text">@Model.caritem.Description.</p>
+                                <p class="card-text">Barcode : @Model.caritem.Barcode.</p>
+                                <p class="card-text">$ @Model.caritem.Price </p>
+                            </div>
+                      </div>
+                  </div>
+             </div>
+         </div>
+      </div>
+
+    <hr />
+    <a asp-page="Index" class="btn btn-warning mt-4 ms-2" style="width:20%;">Back</a>
+    <button type="submit" class="btn btn-danger mt-4 ms-2" style="width:20%;">Delete</button>
+</div>

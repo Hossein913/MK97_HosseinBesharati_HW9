@@ -1,0 +1,60 @@
+﻿@page "/Products/Edite/{id:min(1)}"
+@model ProductManager.Pages.Products.FormModel
+@{
+    var imgRef = "../../images/" + (@Model.caritem.Photo ?? "NoImages.jpg");
+    ViewData["Title"] = "Edite";
+    ViewData["Name"] = @Model.caritem.Name;
+}
+<div class="row align-self-center justify-content-center">
+  <div class="col-6">
+
+    <div class="row align-self-center justify-content-center">
+       <div class="col-6">
+                <img class="rounded-circle" src="@imgRef" alt="caritem.Photo" width="300px">
+        </div>
+    </div>
+    <form method="Post" enctype="multipart/form-data">
+            <input hidden asp-for="caritem.Id"/>
+            <input hidden asp-for="caritem.Photo"/>
+      <div asp-validation-summary="All" class="text-danger"></div>
+      <div class="row">
+         <div class="col-6">
+            <div class="form-group col-md-12">
+            <label asp-for="caritem.Name"></label>
+            <input asp-for="caritem.Name" class="form-control">
+            <span asp-validation-for="caritem.Name" class="text-danger"></span>
+        </div>
+            <div class="form-group col-md-12">
+            <label asp-for="caritem.Barcode"></label>
+            <input asp-for="caritem.Barcode" class="form-control">
+                        <span asp-validation-for="caritem.Barcode" class="text-danger"></span>
+        </div>
+            <div class="form-group col-md-12">
+            <label asp-for="caritem.Price"></label>
+            <input asp-for="caritem.Price" class="form-control">
+                        <span asp-validation-for="caritem.Price" class="text-danger"></span>
+        </div>
+         </div>
+         <div class="col-6">
+            <div class="custom-file">
+                <label asp-for="caritem.Photo" class="form-label"></label>
+                <input asp-for="image" class="form-control" />
+            </div>
+            <div class="form-group mt-1">
+                <label asp-for="caritem.Description"></label>
+                <textarea asp-for="caritem.Description" class="form-control" rows="3"></textarea>
+            </div>
+         </div>
+      </div>
+            <a class="btn btn-warning mt-4 ms-2" style="width:20%;" asp-page="Index">Back</a>
+            <button type="submit" class="btn btn-primary mt-4 ms-2" style="width:20%;">save</button>
+
+    </form>
+  </div>
+</div>
+
+ @section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+     }

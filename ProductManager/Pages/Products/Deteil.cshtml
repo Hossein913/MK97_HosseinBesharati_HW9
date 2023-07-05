@@ -1,0 +1,36 @@
+﻿@page "/Products/View/{id:min(1)}"
+@model ProductManager.Pages.Products.DeteilModel
+@{
+    var imgRef = "../../images/" + (@Model.caritem.Photo ?? "NoImages.jpg");
+
+    ViewData["Title"] = "Deteil";
+    ViewData["Name"] = @Model.caritem.Name;
+
+}
+<div class="row align-self-center justify-content-center">
+    <div class="col-7">
+
+      <div class="card-deck">
+            <div class="row align-self-center justify-content-center">
+
+            <div class="card m-4" style="width: 40rem; max-width:60%;">
+                <img asp-append-version="true" class="card-img mt-1" src="@imgRef" alt="@Model.caritem.Photo" height="60%">
+                <div class="card-body">
+                    <h5 class="card-title">@Model.caritem.Name</h5>
+                    <div calss="ms-2">
+                        <p class="card-text">@Model.caritem.Description.</p>
+                        <p class="card-text">Barcode : @Model.caritem.Barcode.</p>
+                        <p class="card-text">$ @Model.caritem.Price </p>
+                    </div>
+                    <hr width="100%">
+                    <div class="mt-2">
+                        <a class="btn btn-warning m-1" asp-page="Index">Back to List</a>
+                    </div>
+                </div>
+            </div>
+         </div>
+
+      </div>
+    </div>
+
+</div>
