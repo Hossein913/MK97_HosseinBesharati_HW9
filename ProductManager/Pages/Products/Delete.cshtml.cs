@@ -8,6 +8,7 @@ namespace ProductManager.Pages.Products
     public class DeleteModel : PageModel
     {
         private readonly IProductRepository _repository;
+        [BindProperty]
         public Car caritem { get; set; }
 
         public DeleteModel(IProductRepository productRepository)
@@ -24,6 +25,18 @@ namespace ProductManager.Pages.Products
                 return RedirectToPage("Error");
             }
             return Page();
+        }
+
+        public IActionResult OnPost()
+        {
+            caritem = _repository.Delete(caritem.Id);
+
+            if (caritem == null)
+            {
+                return RedirectToPage("Error");
+            }
+            return RedirectToPage("Index");
+
         }
     }
 }

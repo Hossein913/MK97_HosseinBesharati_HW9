@@ -15,7 +15,7 @@ namespace ProductManager.Services.Interface
 
         Car Update(Car car);
 
-        void Delete(Car car);
+        Car Delete(int id);
         void create(Car car);
     }
 }

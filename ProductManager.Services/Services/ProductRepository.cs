@@ -29,9 +29,16 @@ namespace ProductManager.Services.Services
             _cars.Add(car);
         }
 
-        public void Delete(Car car)
+        public Car Delete(int id)
         {
-            _cars.Remove(car);
+            Car car = GetProductById(id);
+
+            if (car != null)
+            {
+                _cars.Remove(car);
+            }
+
+            return car;
         }
 
         public IEnumerable<Car> GetAllProduct()
@@ -47,6 +54,7 @@ namespace ProductManager.Services.Services
         public Car Update(Car updatedcar)
         {
             Car car = _cars.Find(p => p.Id == updatedcar.Id);
+
             if (car != null)
             {
                 car.Name = updatedcar.Name;
